@@ -6,5 +6,5 @@ primarily for learning purposes.
 Please direct all issues and pull requests to the
 [gitlab](https://gitlab.com/donottellmetonottellyou/tic-tac-toe).
 
-As stated in the LICENSE, the code in this repository can be used for any
-purpose.
+As stated in the [LICENSE](./LICENSE), the code in this repository can be used
+for any purpose.
