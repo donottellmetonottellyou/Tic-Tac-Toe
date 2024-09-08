@@ -5,5 +5,5 @@
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 
-[node name="TicTacToeGrid" type="TicTacToeGrid" parent="."]
+[node name="ExtGrid" type="ExtGrid" parent="."]
 z_index = 1

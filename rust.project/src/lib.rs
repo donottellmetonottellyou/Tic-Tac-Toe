@@ -15,11 +15,11 @@ unsafe impl ExtensionLibrary for TicTacToeExtensionLibrary {}
 
 #[derive(GodotClass)]
 #[class(base=Camera2D, init)]
-struct TicTacToeCamera {
+struct ExtCamera {
     base: Base<Camera2D>,
 }
 #[godot_api]
-impl ICamera2D for TicTacToeCamera {}
+impl ICamera2D for ExtCamera {}
 
 #[derive(Clone, Copy, PartialEq, Eq)]
 enum SquareChoice {
@@ -32,31 +32,31 @@ static DIRTY_GRID: AtomicBool = AtomicBool::new(false);
 
 #[derive(GodotClass)]
 #[class(base=Node2D)]
-struct TicTacToeGrid {
-    squares: [[Gd<TicTacToeSquare>; 3]; 3],
+struct ExtGrid {
+    squares: [[Gd<ExtSquare>; 3]; 3],
     turn: SquareChoice,
     game_over_time: Option<Instant>,
 
     base: Base<Node2D>,
 }
 #[godot_api]
-impl INode2D for TicTacToeGrid {
+impl INode2D for ExtGrid {
     fn init(base: Base<Self::Base>) -> Self {
         let mut squares = [
             [
-                TicTacToeSquare::new_alloc(),
-                TicTacToeSquare::new_alloc(),
-                TicTacToeSquare::new_alloc(),
+                ExtSquare::new_alloc(),
+                ExtSquare::new_alloc(),
+                ExtSquare::new_alloc(),
             ],
             [
-                TicTacToeSquare::new_alloc(),
-                TicTacToeSquare::new_alloc(),
-                TicTacToeSquare::new_alloc(),
+                ExtSquare::new_alloc(),
+                ExtSquare::new_alloc(),
+                ExtSquare::new_alloc(),
             ],
             [
-                TicTacToeSquare::new_alloc(),
-                TicTacToeSquare::new_alloc(),
-                TicTacToeSquare::new_alloc(),
+                ExtSquare::new_alloc(),
+                ExtSquare::new_alloc(),
+                ExtSquare::new_alloc(),
             ],
         ];
 
@@ -94,7 +94,7 @@ impl INode2D for TicTacToeGrid {
     }
 }
 #[godot_api]
-impl TicTacToeGrid {
+impl ExtGrid {
     fn check_game_reset(&mut self, time: Instant) {
         // Dead zone for reset is 1 second
         if time.elapsed() < Duration::from_secs(1) {
@@ -164,7 +164,7 @@ impl TicTacToeGrid {
 
 #[derive(GodotClass)]
 #[class(base=Area2D)]
-struct TicTacToeSquare {
+struct ExtSquare {
     is_hovered_over: bool,
     is_part_of_solution: bool,
     choice: SquareChoice,
@@ -175,7 +175,7 @@ struct TicTacToeSquare {
     base: Base<Area2D>,
 }
 #[godot_api]
-impl IArea2D for TicTacToeSquare {
+impl IArea2D for ExtSquare {
     fn init(base: Base<Self::Base>) -> Self {
         Self {
             is_hovered_over: false,
@@ -219,7 +219,7 @@ impl IArea2D for TicTacToeSquare {
     }
 }
 #[godot_api]
-impl TicTacToeSquare {
+impl ExtSquare {
     #[func]
     fn on_mouse_entered(&mut self) {
         self.is_hovered_over = true;
@@ -232,7 +232,7 @@ impl TicTacToeSquare {
 
     #[func]
     fn on_input_event(&mut self, _viewport: Gd<Node>, event: Gd<InputEvent>, _shape_idx: i32) {
-        let mut grid: Gd<TicTacToeGrid> = self.base().get_parent().unwrap().cast();
+        let mut grid: Gd<ExtGrid> = self.base().get_parent().unwrap().cast();
         if grid.bind().game_over_time.is_some() {
             return;
         }
