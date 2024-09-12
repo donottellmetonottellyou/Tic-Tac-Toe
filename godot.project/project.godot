@@ -23,6 +23,10 @@ window/size/viewport_width=240
 window/size/viewport_height=240
 window/stretch/mode="viewport"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 ui_mouse_click_left={
