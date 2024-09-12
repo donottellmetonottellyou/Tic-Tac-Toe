@@ -6,5 +6,5 @@ reloadable = true
 [libraries]
 linux.debug.x86_64 =     "res://../rust.project/target/debug/libtic_tac_toe.so"
 linux.release.x86_64 =   "res://../rust.project/target/release/libtic_tac_toe.so"
-windows.debug.x86_64 =   "res://../rust.project/target/debug/tic_tac_toe.dll"
-windows.release.x86_64 = "res://../rust.project/target/release/tic_tac_toe.dll"
+windows.debug.x86_64 =   "res://../rust.project/target/x86_64-pc-windows-gnu/debug/tic_tac_toe.dll"
+windows.release.x86_64 = "res://../rust.project/target/x86_64-pc-windows-gnu/release/tic_tac_toe.dll"
