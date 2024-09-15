@@ -194,7 +194,7 @@ impl IArea2D for ExtSquare {
 
         self.sprite.set_hframes(2);
         self.sprite.set_vframes(3);
-        self.sprite.set_texture(load("res://Assets/squares.png"));
+        self.sprite.set_texture(load("res://assets/squares.png"));
         gd.add_child(self.sprite.clone().upcast());
 
         self.shape.set_shape({
