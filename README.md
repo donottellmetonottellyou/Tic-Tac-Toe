@@ -1,5 +1,7 @@
 # Tic-Tac-Toe
 
+![Screenshot](./screenshots/game-1.png)
+
 This is a Godot implementation of TicTacToe, with the logic written in Rust,
 primarily for learning purposes.
 
